@@ -24,11 +24,15 @@ class Calc extends React.Component {
   render() {
     const n = this.state.n;
     return (
-      <fieldset>
-        <legend>Введите количество слагаемых первых натуральных чисел:</legend>
-        <input value={n} onChange={this.handleChange} />
-        <Sum m={parseFloat(n)} />
-      </fieldset>
+      <div className="App">
+        <header className="App-header">
+          <legend>
+            Введите количество слагаемых первых натуральных чисел:
+          </legend>
+          <input value={n} onChange={this.handleChange} />
+          <Sum m={parseFloat(n)} />
+        </header>
+      </div>
     );
   }
 }
