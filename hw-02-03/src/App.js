@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
 
-function App() {
+function Sum(props) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <h1>
+      Сумма {props.m} первых натуральных чисел равна{" "}
+      {(props.m * (props.m + 1)) / 2}{" "}
+    </h1>
   );
 }
 
-export default App;
+class Calc extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.state = { n: "3" };
+  }
+
+  handleChange(e) {
+    this.setState({ n: e.target.value });
+  }
+
+  render() {
+    const n = this.state.n;
+    return (
+      <fieldset>
+        <legend>Введите количество слагаемых первых натуральных чисел:</legend>
+        <input value={n} onChange={this.handleChange} />
+        <Sum m={parseFloat(n)} />
+      </fieldset>
+    );
+  }
+}
+
+export default Calc;
